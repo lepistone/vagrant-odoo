@@ -1,0 +1,18 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure(2) do |config|
+  config.vm.box = "ubuntu/vivid64"
+  config.vm.network "private_network", ip: "192.168.33.10"
+
+  config.vm.synced_folder "~/w", "/w", nfs: true
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 2048
+    vb.cpus = 4
+  end
+
+  config.vm.provision "dist-upgrade", type: "shell", path: "../prov/dist-upgrade.sh"
+  config.vm.provision "install-system-packages", type: "shell", path: "../prov/install-system-packages.sh"
+  config.vm.provision "setup-postgres", type: "shell", path: "../prov/setup-postgres.sh"
+  config.vm.provision "setup-python", type: "shell", path: "../prov/setup-python.sh"
+end

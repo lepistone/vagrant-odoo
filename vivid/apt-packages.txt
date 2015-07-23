@@ -1,0 +1,11 @@
+openssh-server
+vim-gnome
+git
+postgresql
+libpq-dev
+python-dev
+libxml2-dev 
+libxslt-dev
+libsasl2-dev
+libldap-dev
+libjpeg-dev
